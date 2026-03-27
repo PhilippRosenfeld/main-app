@@ -1,0 +1,33 @@
+<div style="padding: 1rem 0;">
+  <p style="font-size: 30px; color: gray; margin: 0 0 1rem;">PanOpSys — Atmosphärische Sensordaten</p>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1rem;">
+
+    <div style="background: #f5f5f5; border-radius: 8px; padding: 1rem;">
+      <p style="font-size: 13px; color: gray; margin: 0 0 6px;">Temperatur</p>
+      <p style="font-size: 26px; font-weight: 500; margin: 0;">{{ atmo?.temp ?? '-' }} °C</p>
+    </div>
+
+    <div style="background: #f5f5f5; border-radius: 8px; padding: 1rem;">
+      <p style="font-size: 13px; color: gray; margin: 0 0 6px;">Luftfeuchtigkeit</p>
+      <p style="font-size: 26px; font-weight: 500; margin: 0;">{{ atmo?.humidity ?? '-' }} %</p>
+    </div>
+
+    <div style="background: #f5f5f5; border-radius: 8px; padding: 1rem;">
+      <p style="font-size: 13px; color: gray; margin: 0 0 6px;">Luftdruck</p>
+      <p style="font-size: 26px; font-weight: 500; margin: 0;">{{ atmo?.pressure ?? '-' }} hPa</p>
+    </div>
+
+  </div>
+
+  <div style="background: white; border: 1px solid #e0e0e0; border-radius: 12px; padding: 1rem 1.25rem;">
+    <p style="font-size: 13px; color: gray; margin: 0 0 12px;">Letzter Messwert</p>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="width: 8px; height: 8px; border-radius: 50%; background: #1D9E75;"></div>
+      <p style="font-size: 14px; margin: 0;">{{ timeInfo ?? '-' }}</p>
+    </div>
+  </div>
+
+  <app-atmo-chart></app-atmo-chart>
+
+</div>
