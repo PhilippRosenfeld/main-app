@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, NgZone, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription, timer, switchMap } from 'rxjs';
-import { AtmoService } from '../../service/atmo.service';
+import { AtmoService } from '../../../service/atmo.service';
 import {AtmoChartComponent} from '../atmo-chart.component/atmo-chart.component';
 
 @Component({
@@ -22,7 +22,7 @@ export class AtmoComponent implements OnInit, OnDestroy {
 ) {}
 
   ngOnInit(): void {
-    this.subscription = timer(0, 10000).pipe(
+    this.subscription = timer(0, 60000).pipe(
       switchMap(() => this.atmoService.getLatest())
     ).subscribe({
       next: (data) => {

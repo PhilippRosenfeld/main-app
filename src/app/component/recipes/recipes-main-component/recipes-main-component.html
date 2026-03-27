@@ -1,0 +1,26 @@
+<div style="padding: 2rem 1.5rem; max-width: 800px; margin: 0 auto;">
+  <h1 style="font-size: 22px; font-weight: 500; margin-bottom: 1.5rem;">Rezepte</h1>
+
+  <div *ngFor="let category of categories" style="margin-bottom: 8px;">
+
+    <div (click)="toggle(category.id)"
+         style="display: flex; justify-content: space-between; align-items: center;
+                background: white; border: 1px solid #e0e0e0; border-radius: 8px;
+                padding: 1rem 1.25rem; cursor: pointer;">
+      <p style="font-weight: 500; margin: 0;">{{ category.name }}</p>
+      <span style="font-size: 12px; color: gray;">{{ isOpen(category.id) ? '▲' : '▼' }}</span>
+    </div>
+
+    <div *ngIf="isOpen(category.id)">
+      <a *ngFor="let recipe of category.recipes"
+         [routerLink]="['/recipes', category.id, recipe.id]"
+         style="display: block; text-decoration: none; padding: 0.75rem 1.25rem;
+                border: 1px solid #e0e0e0; border-top: none; background: #fafafa;
+                cursor: pointer;">
+        <p style="margin: 0; font-size: 14px; color: #1a1a1a;">{{ recipe.name }}</p>
+        <p style="margin: 0; font-size: 12px; color: gray;">{{ recipe.description }}</p>
+      </a>
+    </div>
+
+  </div>
+</div>

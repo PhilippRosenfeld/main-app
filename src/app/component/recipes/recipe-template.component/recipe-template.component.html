@@ -1,0 +1,84 @@
+<div style="max-width: 800px; margin: 0 auto; padding: 1.5rem;">
+
+  <a routerLink="/recipes" style="font-size: 13px; color: gray;">← Back</a>
+
+  <div style="background: #e8e0d8; border-radius: 12px; height: 280px; display: flex; align-items: flex-end; padding: 1.5rem; margin: 1rem 0 0; position: relative; overflow: hidden;">
+    <img *ngIf="recipe.image" [src]="recipe.image" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+    <div style="position: absolute; top: 1rem; left: 1rem;">
+      <span style="font-size: 13px; color: #712B13; background: #F5C4B3; padding: 4px 12px; border-radius: 8px;">{{ recipe.category }}</span>
+    </div>
+    <div style="position: relative;">
+      <h1 style="font-size: 28px; font-weight: 500; margin: 0 0 4px; color: white;">{{ recipe.name }}</h1>
+      <p style="font-size: 14px; color: rgba(255,255,255,0.8); margin: 0;">{{ recipe.description }}</p>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 12px 0;">
+    <div style="background: #f5f5f5; border-radius: 8px; padding: 12px; text-align: center;">
+      <p style="font-size: 11px; color: gray; margin: 0 0 4px;">Preparation</p>
+      <p style="font-size: 16px; font-weight: 500; margin: 0;">{{ recipe.prepTime }}</p>
+    </div>
+    <div style="background: #f5f5f5; border-radius: 8px; padding: 12px; text-align: center;">
+      <p style="font-size: 11px; color: gray; margin: 0 0 4px;">Cooking Time</p>
+      <p style="font-size: 16px; font-weight: 500; margin: 0;">{{ recipe.cookTime }}</p>
+    </div>
+    <div style="background: #f5f5f5; border-radius: 8px; padding: 12px; text-align: center;">
+      <p style="font-size: 11px; color: gray; margin: 0 0 4px;">Difficulty</p>
+      <p style="font-size: 16px; font-weight: 500; margin: 0;">{{ recipe.difficulty }}</p>
+    </div>
+    <div style="background: #f5f5f5; border-radius: 8px; padding: 12px; text-align: center;">
+      <p style="font-size: 11px; color: gray; margin: 0 0 4px;">Portions</p>
+      <p style="font-size: 16px; font-weight: 500; margin: 0;">{{ recipe.portions }}</p>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 12px;">
+
+    <div style="background: white; border: 1px solid #e0e0e0; border-radius: 12px; padding: 1.25rem;">
+      <p style="font-size: 15px; font-weight: 500; margin: 0 0 12px;">Ingredients</p>
+      <div *ngFor="let ingredient of recipe.ingredients; let last = last"
+           style="display: flex; justify-content: space-between; font-size: 13px; padding-bottom: 6px;"
+           [style.border-bottom]="!last ? '0.5px solid #e0e0e0' : 'none'">
+        <span style="color: gray;">{{ ingredient.name }}</span>
+        <span>{{ ingredient.amount }}</span>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+
+      <div style="background: white; border: 1px solid #e0e0e0; border-radius: 12px; padding: 1.25rem;">
+        <p style="font-size: 15px; font-weight: 500; margin: 0 0 12px;">Steps</p>
+        <div *ngFor="let step of recipe.steps; let i = index"
+             style="display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px;">
+          <div style="min-width: 24px; height: 24px; border-radius: 50%; background: #E1F5EE; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #0F6E56;">
+            {{ i + 1 }}
+          </div>
+          <p style="font-size: 13px; color: gray; margin: 0; line-height: 1.5;">{{ step }}</p>
+        </div>
+      </div>
+
+      <div style="background: white; border: 1px solid #e0e0e0; border-radius: 12px; padding: 1.25rem;">
+        <p style="font-size: 15px; font-weight: 500; margin: 0 0 12px;">Nutrients</p>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+          <div style="text-align: center;">
+            <p style="font-size: 11px; color: gray; margin: 0 0 2px;">Calories</p>
+            <p style="font-size: 15px; font-weight: 500; margin: 0;">{{ recipe.nutrition.calories }}</p>
+          </div>
+          <div style="text-align: center;">
+            <p style="font-size: 11px; color: gray; margin: 0 0 2px;">Fat</p>
+            <p style="font-size: 15px; font-weight: 500; margin: 0;">{{ recipe.nutrition.fat }}g</p>
+          </div>
+          <div style="text-align: center;">
+            <p style="font-size: 11px; color: gray; margin: 0 0 2px;">Carbohydrates</p>
+            <p style="font-size: 15px; font-weight: 500; margin: 0;">{{ recipe.nutrition.carbs }}g</p>
+          </div>
+          <div style="text-align: center;">
+            <p style="font-size: 11px; color: gray; margin: 0 0 2px;">Protein</p>
+            <p style="font-size: 15px; font-weight: 500; margin: 0;">{{ recipe.nutrition.protein }}g</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

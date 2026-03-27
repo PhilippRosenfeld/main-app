@@ -1,8 +1,13 @@
-"styles": [
-"node_modules/bootstrap/dist/css/bootstrap.min.css",
-"node_modules/bootstrap-icons/font/bootstrap-icons.css",
-"src/styles.css"
-],
-"scripts": [
-"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-]
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f8f9fa;
+}
+
+a {
+  color: inherit;
+}
+
+.navbar-brand {
+  font-weight: 500;
+}

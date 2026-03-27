@@ -3,6 +3,7 @@ import {RouterLink, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-panopsys-main-component',
+  standalone: true,
   imports: [
     RouterLink,
     RouterOutlet

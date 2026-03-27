@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription, timer, switchMap } from 'rxjs';
-import { AtmoService } from '../../service/atmo.service';
+import { AtmoService } from '../../../service/atmo.service';
 import Chart from 'chart.js/auto';
 import {FormsModule} from '@angular/forms';
 
@@ -41,17 +41,17 @@ export class AtmoChartComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.subscription = timer(0, 10000).pipe(
-      switchMap(() => this.atmoService.getAll(this.limit))
-    ).subscribe({
-      next: (data) => {
-        this.zone.run(() => {
-          this.data = data.reverse();
-          this.updateChart();
-        });
-      },
-      error: (err) => console.error(err)
-    });
+    this.subscription = timer(0, 60000)
+      .pipe(switchMap(() => this.atmoService.getAll(this.limit)))
+      .subscribe({
+        next: (data) => {
+          this.zone.run(() => {
+            this.data = data.reverse();
+            this.updateChart();
+          });
+        },
+        error: (err) => console.error(err),
+      });
   }
 
   updateChart(): void {
