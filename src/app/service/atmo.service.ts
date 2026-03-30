@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AtmoService {
-  private apiUrl = 'http://localhost:8080/atmo';
+  private apiUrl = 'http://raspberrypi/api/atmo';
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +17,4 @@ export class AtmoService {
   getAll(limit: number = 50): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/all?limit=${limit}`);
   }
-
-
 }
