@@ -8,6 +8,7 @@ export interface RecipeModel {
   difficulty: string;
   portions: number;
   ingredients: { name: string; amount: string }[];
+  optionalIngredients?: { name: string; amount: string }[];
   steps: string[];
   nutrition: {
     calories: number;

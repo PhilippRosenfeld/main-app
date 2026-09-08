@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AtmoService {
-  private apiUrl = 'http://raspberrypi/api/atmo';
+  private apiUrl = 'https://mezza9.xyz/api/atmo';
 
   constructor(private http: HttpClient) {}
 

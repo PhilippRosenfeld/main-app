@@ -11,13 +11,4 @@ import { Category, RECIPES } from '../recipes.list';
 })
 export class RecipesListComponent {
   categories: Category[] = RECIPES;
-  openCategories: Set<string> = new Set();
-
-  toggle(id: string): void {
-    this.openCategories.has(id) ? this.openCategories.delete(id) : this.openCategories.add(id);
-  }
-
-  isOpen(id: string): boolean {
-    return this.openCategories.has(id);
-  }
 }

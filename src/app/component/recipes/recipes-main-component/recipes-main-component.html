@@ -1,26 +1,22 @@
-<div style="padding: 2rem 1.5rem; max-width: 800px; margin: 0 auto;">
+<div style="padding: 2rem 1.5rem; max-width: 900px; margin: 0 auto;">
   <h1 style="font-size: 22px; font-weight: 500; margin-bottom: 1.5rem;">Rezepte</h1>
 
-  <div *ngFor="let category of categories" style="margin-bottom: 8px;">
+  <div *ngFor="let category of categories" style="margin-bottom: 2rem;">
+    <h2 style="font-size: 15px; font-weight: 500; margin: 0 0 12px; color: #444;">{{ category.name }}</h2>
 
-    <div (click)="toggle(category.id)"
-         style="display: flex; justify-content: space-between; align-items: center;
-                background: white; border: 1px solid #e0e0e0; border-radius: 8px;
-                padding: 1rem 1.25rem; cursor: pointer;">
-      <p style="font-weight: 500; margin: 0;">{{ category.name }}</p>
-      <span style="font-size: 12px; color: gray;">{{ isOpen(category.id) ? '▲' : '▼' }}</span>
-    </div>
-
-    <div *ngIf="isOpen(category.id)">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px;">
       <a *ngFor="let recipe of category.recipes"
          [routerLink]="['/recipes', category.id, recipe.id]"
-         style="display: block; text-decoration: none; padding: 0.75rem 1.25rem;
-                border: 1px solid #e0e0e0; border-top: none; background: #fafafa;
-                cursor: pointer;">
-        <p style="margin: 0; font-size: 14px; color: #1a1a1a;">{{ recipe.name }}</p>
-        <p style="margin: 0; font-size: 12px; color: gray;">{{ recipe.description }}</p>
+         style="display: block; text-decoration: none; position: relative; height: 160px;
+                border-radius: 10px; overflow: hidden; background: #e8e0d8;">
+        <img [src]="'assets/' + recipe.id + '.jpg'"
+             (error)="$any($event.target).style.display = 'none'"
+             style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; inset: 0;
+                    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0) 55%);"></div>
+        <p style="position: absolute; left: 10px; right: 10px; bottom: 10px; margin: 0;
+                  font-size: 14px; font-weight: 500; color: white;">{{ recipe.name }}</p>
       </a>
     </div>
-
   </div>
 </div>

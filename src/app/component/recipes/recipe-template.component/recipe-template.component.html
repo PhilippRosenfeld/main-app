@@ -42,6 +42,16 @@
         <span style="color: gray;">{{ ingredient.name }}</span>
         <span>{{ ingredient.amount }}</span>
       </div>
+      <div *ngIf="recipe.optionalIngredients && recipe.optionalIngredients.length > 0"
+           style="margin-top: 12px; padding-top: 12px; border-top: 0.5px solid #e0e0e0;">
+        <p style="font-size: 12px; color: gray; margin: 0 0 8px;">Optional</p>
+        <div *ngFor="let ingredient of recipe.optionalIngredients; let last = last"
+             style="display: flex; justify-content: space-between; font-size: 13px; padding-bottom: 6px;"
+             [style.border-bottom]="!last ? '0.5px solid #e0e0e0' : 'none'">
+          <span style="color: gray;">{{ ingredient.name }}</span>
+          <span>{{ ingredient.amount }}</span>
+        </div>
+      </div>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -62,7 +72,7 @@
         <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
           <div style="text-align: center;">
             <p style="font-size: 11px; color: gray; margin: 0 0 2px;">Calories</p>
-            <p style="font-size: 15px; font-weight: 500; margin: 0;">{{ recipe.nutrition.calories }}</p>
+            <p style="font-size: 15px; font-weight: 500; margin: 0;">{{ recipe.nutrition.calories }}kcal</p>
           </div>
           <div style="text-align: center;">
             <p style="font-size: 11px; color: gray; margin: 0 0 2px;">Fat</p>
