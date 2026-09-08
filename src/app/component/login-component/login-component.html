@@ -1,0 +1,21 @@
+<div style="max-width: 400px; margin: 5rem auto; padding: 1.5rem;">
+  <h1 style="font-size: 22px; font-weight: 500; margin-bottom: 1.5rem;">Login</h1>
+
+  <div style="background: white; border: 1px solid #e0e0e0; border-radius: 12px; padding: 1.5rem;">
+    <div style="margin-bottom: 1rem;">
+      <p style="font-size: 13px; color: gray; margin: 0 0 6px;">Username</p>
+      <input [(ngModel)]="username" type="text" style="width: 100%; padding: 8px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px;">
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+      <p style="font-size: 13px; color: gray; margin: 0 0 6px;">Password</p>
+      <input [(ngModel)]="password" type="password" style="width: 100%; padding: 8px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px;">
+    </div>
+
+    <p *ngIf="error" style="font-size: 13px; color: red; margin: 0 0 1rem;">{{ error }}</p>
+
+    <button (click)="login()" style="width: 100%; padding: 10px; background: #1D9E75; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;">
+      Login
+    </button>
+  </div>
+</div>
