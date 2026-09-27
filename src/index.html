@@ -5,7 +5,25 @@
   <title>Mezzanine</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#120d0a">
   <link rel="icon" type="image/x-icon" href="assets/leviathan-cross.png">
+  <!-- Applies the stored theme and design style before first paint to avoid a flash. -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      try {
+        var pref = localStorage.getItem('theme');
+        var light = pref === 'light' || (pref === 'system' && !window.matchMedia('(prefers-color-scheme: dark)').matches);
+        var style = localStorage.getItem('style');
+        root.setAttribute('data-theme', light ? 'light' : 'dark');
+        root.setAttribute('data-style', style === 'sigillum' || style === 'tenebrae' ? style : 'grimoire');
+      } catch (e) {
+        root.setAttribute('data-theme', 'dark');
+        root.setAttribute('data-style', 'grimoire');
+      }
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>

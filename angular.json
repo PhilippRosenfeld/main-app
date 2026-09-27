@@ -26,11 +26,25 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fontsource/unifrakturmaguntia/400.css",
+              "node_modules/@fontsource/eb-garamond/400.css",
+              "node_modules/@fontsource/eb-garamond/400-italic.css",
+              "node_modules/@fontsource/eb-garamond/500.css",
+              "node_modules/@fontsource/cinzel/400.css",
+              "node_modules/@fontsource/cinzel/500.css",
+              "node_modules/@fontsource/cinzel/600.css",
+              "node_modules/@fontsource/cinzel-decorative/400.css",
+              "node_modules/@fontsource/cormorant-garamond/400.css",
+              "node_modules/@fontsource/cormorant-garamond/400-italic.css",
+              "node_modules/@fontsource/cormorant-garamond/500.css",
+              "node_modules/@fontsource/grenze-gotisch/700.css",
+              "node_modules/@fontsource/grenze-gotisch/900.css",
+              "node_modules/@fontsource/ibm-plex-mono/400.css",
+              "node_modules/@fontsource/ibm-plex-mono/500.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.css"
             ],
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -58,6 +72,9 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "main-app:build:production"

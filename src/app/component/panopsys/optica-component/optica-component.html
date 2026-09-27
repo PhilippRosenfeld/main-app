@@ -1,5 +1,19 @@
-<p>Lichtlevel: wann, wie stark -> linediagram</p>
-<p>kamerafeed: live? bilder </p>
-<p>bewegungsensor: tür </p>
+<div class="page">
+  <a class="back-link" routerLink="/panopsys"><i class="bi bi-arrow-left"></i> PanOpSys</a>
 
+  <header class="page-header">
+    <span class="eyebrow">Lux in tenebris lucet</span>
+    <h1 class="title">Optica</h1>
+    <p class="subtitle">Dieses Modul ist noch in Arbeit. Geplant sind:</p>
+  </header>
 
+  <div class="grid-auto">
+    @for (item of planned; track item.title) {
+      <div class="panel planned">
+        <i class="bi" [class]="item.icon"></i>
+        <h2 class="panel-title">{{ item.title }}</h2>
+        <p class="muted">{{ item.text }}</p>
+      </div>
+    }
+  </div>
+</div>

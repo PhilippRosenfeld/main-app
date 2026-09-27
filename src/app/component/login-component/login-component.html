@@ -1,21 +1,65 @@
-<div style="max-width: 400px; margin: 5rem auto; padding: 1.5rem;">
-  <h1 style="font-size: 22px; font-weight: 500; margin-bottom: 1.5rem;">Login</h1>
-
-  <div style="background: white; border: 1px solid #e0e0e0; border-radius: 12px; padding: 1.5rem;">
-    <div style="margin-bottom: 1rem;">
-      <p style="font-size: 13px; color: gray; margin: 0 0 6px;">Username</p>
-      <input [(ngModel)]="username" type="text" style="width: 100%; padding: 8px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px;">
+<div class="login-page">
+  <div class="panel login-card">
+    <div class="login-head">
+      <app-leviathan-cross />
+      <span class="eyebrow">Porta clausa</span>
+      <h1 class="login-title">Sign in</h1>
+      <p class="muted">Private dashboards stay sealed until you do.</p>
     </div>
 
-    <div style="margin-bottom: 1.5rem;">
-      <p style="font-size: 13px; color: gray; margin: 0 0 6px;">Password</p>
-      <input [(ngModel)]="password" type="password" style="width: 100%; padding: 8px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px;">
-    </div>
+    <form class="stack" (ngSubmit)="login()" autocomplete="on">
+      <label class="field">
+        <span class="label">Username</span>
+        <span class="input-wrap">
+          <i class="bi bi-person"></i>
+          <input
+            class="input"
+            name="username"
+            type="text"
+            autocomplete="username"
+            placeholder="your name"
+            required
+            [(ngModel)]="username" />
+        </span>
+      </label>
 
-    <p *ngIf="error" style="font-size: 13px; color: red; margin: 0 0 1rem;">{{ error }}</p>
+      <label class="field">
+        <span class="label">Password</span>
+        <span class="input-wrap">
+          <i class="bi bi-key"></i>
+          <input
+            class="input input-password"
+            name="password"
+            autocomplete="current-password"
+            placeholder="••••••••"
+            required
+            [type]="showPassword() ? 'text' : 'password'"
+            [(ngModel)]="password" />
+          <button
+            class="reveal"
+            type="button"
+            (click)="showPassword.set(!showPassword())"
+            [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'">
+            <i class="bi" [class]="showPassword() ? 'bi-eye-slash' : 'bi-eye'"></i>
+          </button>
+        </span>
+      </label>
 
-    <button (click)="login()" style="width: 100%; padding: 10px; background: #1D9E75; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;">
-      Login
-    </button>
+      @if (error()) {
+        <div class="alert" role="alert">
+          <i class="bi bi-exclamation-circle"></i>
+          <span>{{ error() }}</span>
+        </div>
+      }
+
+      <button class="btn btn-primary btn-block" type="submit" [disabled]="loading() || !username || !password">
+        @if (loading()) {
+          <span class="spinner"></span>
+          Signing in…
+        } @else {
+          Sign in
+        }
+      </button>
+    </form>
   </div>
 </div>

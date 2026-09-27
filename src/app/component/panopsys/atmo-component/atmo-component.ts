@@ -1,44 +1,43 @@
-import { Component, OnInit, OnDestroy, NgZone, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Subscription, timer, switchMap } from 'rxjs';
-import { AtmoService } from '../../../service/atmo.service';
-import {AtmoChartComponent} from '../atmo-chart.component/atmo-chart.component';
+import { Component, DestroyRef, OnInit, computed, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
+import { EMPTY, catchError, switchMap, timer } from 'rxjs';
+import { AtmoReading, AtmoService } from '../../../service/atmo.service';
+import { AtmoChartComponent } from '../atmo-chart.component/atmo-chart.component';
 
 @Component({
   selector: 'app-atmo',
   standalone: true,
-  imports: [CommonModule, AtmoChartComponent],
-  templateUrl: './atmo-component.html'
+  imports: [AtmoChartComponent, RouterLink],
+  templateUrl: './atmo-component.html',
 })
-export class AtmoComponent implements OnInit, OnDestroy {
-  atmo: { temp: number, pressure: number, humidity: number } | null = null;
-  timeInfo: string | null = null;
-  private subscription: Subscription = new Subscription();
+export class AtmoComponent implements OnInit {
+  private readonly atmoService = inject(AtmoService);
+  private readonly destroyRef = inject(DestroyRef);
 
-  constructor(
-    private atmoService: AtmoService,
-    private zone: NgZone,
-    private cdr: ChangeDetectorRef
-) {}
+  protected readonly atmo = signal<AtmoReading | null>(null);
+  protected readonly failed = signal(false);
+  protected readonly timeInfo = computed(() => {
+    const ts = this.atmo()?.timestamp;
+    return ts ? new Date(ts).toLocaleString('de-AT') : '–';
+  });
 
   ngOnInit(): void {
-    this.subscription = timer(0, 60000).pipe(
-      switchMap(() => this.atmoService.getLatest())
-    ).subscribe({
-      next: (data) => {
-        this.zone.run(() => {
-          this.atmo = data;
-          this.timeInfo = data.timestamp
-            ? new Date(data.timestamp).toLocaleString('de-AT')
-            : '-';
-          this.cdr.detectChanges();
-        });
-      },
-      error: (err) => console.error(err)
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    timer(0, 60000)
+      .pipe(
+        switchMap(() =>
+          this.atmoService.getLatest().pipe(
+            catchError(() => {
+              this.failed.set(true);
+              return EMPTY;
+            }),
+          ),
+        ),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((data) => {
+        this.atmo.set(data);
+        this.failed.set(false);
+      });
   }
 }

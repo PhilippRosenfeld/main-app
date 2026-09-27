@@ -1,13 +1,1843 @@
+/* =====================================================================
+   Tokens — three design styles (data-style) × light/dark (data-theme).
+   Base :root is Grimoire / dark.
+   ===================================================================== */
+
+:root {
+  /* Grimoire — dark */
+  --bg: #120d0a;
+  --surface: #1a130e;
+  --surface-2: #221912;
+  --text: #e6d8b8;
+  --muted: #a8926f;
+  --subtle: #75634a;
+  --rule: #3a2c1f;
+  --rule-strong: #5c4526;
+  --accent: #8e1d14;
+  --accent-ink: #c4442f;
+  --gold: #b58f45;
+  --on-accent: #f3e6cc;
+  --danger: #d0503a;
+  --inv-bg: #e6d8b8;
+  --inv-text: #120d0a;
+  --glow: rgba(64, 42, 24, 0.55);
+  --vignette: rgba(0, 0, 0, 0.55);
+  --grain: 0.09;
+  --chart-1: #b58f45;
+  --chart-2: #c4442f;
+  --chart-3: #8fa37f;
+
+  --font-display: 'UnifrakturMaguntia', 'Old English Text MT', serif;
+  --font-title: 'UnifrakturMaguntia', 'Old English Text MT', serif;
+  --font-head: 'EB Garamond', Garamond, Georgia, serif;
+  --font-body: 'EB Garamond', Garamond, Georgia, serif;
+  --font-ui: 'EB Garamond', Garamond, Georgia, serif;
+  --font-num: 'EB Garamond', Garamond, Georgia, serif;
+  --title-size: clamp(2.8rem, 6.5vw, 4.2rem);
+  --title-weight: 400;
+  --title-leading: 1;
+  --head-weight: 500;
+  --head-variant: small-caps;
+  --head-transform: none;
+  --head-tracking: 0.04em;
+  --body-size: 18px;
+  --ui-size: 16px;
+  --ui-variant: small-caps;
+  --ui-transform: none;
+  --ui-tracking: 0.1em;
+  --num-variant: oldstyle-nums proportional-nums;
+  --radius: 2px;
+  --radius-card: 2px;
+  --ornament: '❦';
+  --header-h: 68px;
+
+  color-scheme: dark;
+}
+
+:root[data-style='grimoire'][data-theme='light'] {
+  --bg: #efe4c9;
+  --surface: #f6eedb;
+  --surface-2: #e8dbbb;
+  --text: #2a1d12;
+  --muted: #6b5538;
+  --subtle: #92795a;
+  --rule: #d2bd93;
+  --rule-strong: #a88c5f;
+  --accent: #8e1d14;
+  --accent-ink: #8e1d14;
+  --gold: #8a6a28;
+  --on-accent: #f6eedb;
+  --danger: #9e2418;
+  --inv-bg: #2a1d12;
+  --inv-text: #efe4c9;
+  --glow: rgba(255, 249, 232, 0.9);
+  --vignette: rgba(120, 82, 36, 0.22);
+  --grain: 0.12;
+  --chart-1: #8a6a28;
+  --chart-2: #8e1d14;
+  --chart-3: #4f6a4a;
+  color-scheme: light;
+}
+
+:root[data-style='sigillum'] {
+  --bg: #07070a;
+  --surface: #0c0a11;
+  --surface-2: #15111e;
+  --text: #ece4d0;
+  --muted: #9a9281;
+  --subtle: #625c50;
+  --rule: #2a2417;
+  --rule-strong: #5f4d2a;
+  --accent: #c9a55b;
+  --accent-ink: #d9b96f;
+  --gold: #c9a55b;
+  --on-accent: #0c0a11;
+  --danger: #e0675b;
+  --inv-bg: #c9a55b;
+  --inv-text: #07070a;
+  --glow: rgba(52, 36, 84, 0.5);
+  --vignette: rgba(0, 0, 0, 0.5);
+  --grain: 0.05;
+  --chart-1: #c9a55b;
+  --chart-2: #9d8ad6;
+  --chart-3: #d9cfb4;
+
+  --font-display: 'Cinzel Decorative', 'Cinzel', serif;
+  --font-title: 'Cinzel', 'Trajan Pro', serif;
+  --font-head: 'Cinzel', 'Trajan Pro', serif;
+  --font-body: 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-ui: 'Cinzel', 'Trajan Pro', serif;
+  --font-num: 'Cinzel', 'Trajan Pro', serif;
+  --title-size: clamp(2rem, 4.6vw, 2.9rem);
+  --title-weight: 500;
+  --title-leading: 1.1;
+  --head-weight: 500;
+  --head-variant: normal;
+  --head-transform: uppercase;
+  --head-tracking: 0.16em;
+  --body-size: 19px;
+  --ui-size: 12px;
+  --ui-variant: normal;
+  --ui-transform: uppercase;
+  --ui-tracking: 0.24em;
+  --num-variant: lining-nums tabular-nums;
+  --radius: 2px;
+  --radius-card: 4px;
+  --ornament: '✶';
+  color-scheme: dark;
+}
+
+:root[data-style='sigillum'][data-theme='light'] {
+  --bg: #f1ece0;
+  --surface: #f8f4ea;
+  --surface-2: #ebe4d3;
+  --text: #15121c;
+  --muted: #625b4d;
+  --subtle: #8c8472;
+  --rule: #d8ccb0;
+  --rule-strong: #a8894a;
+  --accent: #8f6f2c;
+  --accent-ink: #7a5d20;
+  --gold: #8f6f2c;
+  --on-accent: #f8f4ea;
+  --danger: #a3372c;
+  --inv-bg: #15121c;
+  --inv-text: #f1ece0;
+  --glow: rgba(214, 200, 240, 0.6);
+  --vignette: rgba(90, 70, 30, 0.14);
+  --grain: 0.06;
+  --chart-1: #8f6f2c;
+  --chart-2: #5b4a8a;
+  --chart-3: #3a3445;
+  color-scheme: light;
+}
+
+:root[data-style='tenebrae'] {
+  --bg: #000000;
+  --surface: #000000;
+  --surface-2: #0d0d0d;
+  --text: #ede7dc;
+  --muted: #8e8981;
+  --subtle: #5a5754;
+  --rule: #2a2826;
+  --rule-strong: #ede7dc;
+  --accent: #c3141f;
+  --accent-ink: #e0303a;
+  --gold: #ede7dc;
+  --on-accent: #ede7dc;
+  --danger: #e0303a;
+  --inv-bg: #ede7dc;
+  --inv-text: #000000;
+  --glow: rgba(90, 0, 8, 0.25);
+  --vignette: transparent;
+  --grain: 0.07;
+  --chart-1: #ede7dc;
+  --chart-2: #e0303a;
+  --chart-3: #8e8981;
+
+  --font-display: 'Grenze Gotisch', 'Old English Text MT', serif;
+  --font-title: 'Grenze Gotisch', 'Old English Text MT', serif;
+  --font-head: 'Grenze Gotisch', 'Old English Text MT', serif;
+  --font-body: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-ui: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-num: 'IBM Plex Mono', ui-monospace, monospace;
+  --title-size: clamp(3.2rem, 9vw, 5.5rem);
+  --title-weight: 900;
+  --title-leading: 0.88;
+  --head-weight: 700;
+  --head-variant: normal;
+  --head-transform: none;
+  --head-tracking: 0;
+  --body-size: 14px;
+  --ui-size: 12px;
+  --ui-variant: normal;
+  --ui-transform: uppercase;
+  --ui-tracking: 0.16em;
+  --num-variant: tabular-nums;
+  --radius: 0;
+  --radius-card: 0;
+  --ornament: '✝';
+  color-scheme: dark;
+}
+
+:root[data-style='tenebrae'][data-theme='light'] {
+  --bg: #ede7dc;
+  --surface: #ede7dc;
+  --surface-2: #e2dbce;
+  --text: #000000;
+  --muted: #5c5853;
+  --subtle: #8a847b;
+  --rule: #c9c1b3;
+  --rule-strong: #000000;
+  --accent: #b0101a;
+  --accent-ink: #b0101a;
+  --gold: #000000;
+  --on-accent: #ede7dc;
+  --danger: #b0101a;
+  --inv-bg: #000000;
+  --inv-text: #ede7dc;
+  --glow: transparent;
+  --grain: 0.08;
+  --chart-1: #000000;
+  --chart-2: #b0101a;
+  --chart-3: #7a756e;
+  color-scheme: light;
+}
+
+/* =====================================================================
+   Base
+   ===================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #f8f9fa;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Candle-light glow and vignette */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -5%, var(--glow), transparent 70%),
+    radial-gradient(ellipse at center, transparent 50%, var(--vignette) 100%);
+}
+
+/* Paper / film grain */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--grain);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: var(--head-weight);
+  font-variant: var(--head-variant);
+  text-transform: var(--head-transform);
+  letter-spacing: var(--head-tracking);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
 }
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
-.navbar-brand {
-  font-weight: 500;
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 1px solid var(--accent-ink);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.ui {
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+}
+
+.num {
+  font-family: var(--font-num);
+  font-variant-numeric: var(--num-variant);
+}
+
+/* =====================================================================
+   Layout
+   ===================================================================== */
+
+.page {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+  animation: rise 0.6s ease both;
+}
+
+.page-narrow {
+  max-width: 880px;
+}
+
+@keyframes rise {
+  from { opacity: 0.4; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.page-header {
+  margin-bottom: 2.25rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+}
+
+.title {
+  font-family: var(--font-title);
+  font-size: var(--title-size);
+  font-weight: var(--title-weight);
+  line-height: var(--title-leading);
+  font-variant: normal;
+  letter-spacing: normal;
+}
+
+:root[data-style='sigillum'] .title {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  max-width: 58ch;
+}
+
+:root:not([data-style='tenebrae']) .subtitle {
+  font-style: italic;
+  font-size: 1.1em;
+}
+
+.section-title {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  font-weight: 400;
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+}
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+  gap: 1.25rem;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--text);
+  gap: 0.7rem;
+}
+
+/* Ornamental divider: ——— ❦ ——— */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  color: var(--gold);
+  font-size: 1.3rem;
+}
+
+.ornament::before,
+.ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rule-strong), transparent);
+}
+
+.ornament > span::before {
+  content: var(--ornament);
+}
+
+:root[data-style='tenebrae'] .ornament::before,
+:root[data-style='tenebrae'] .ornament::after {
+  background: var(--rule);
+}
+
+/* =====================================================================
+   Panels (cards)
+   ===================================================================== */
+
+.panel {
+  position: relative;
+  padding: 1.5rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+
+/* Grimoire: double-ruled page border */
+:root[data-style='grimoire'] .panel {
+  box-shadow: inset 0 0 0 5px var(--surface), inset 0 0 0 6px var(--rule);
+}
+
+/* Sigillum: hairline gold frame, dusk gradient */
+:root[data-style='sigillum'] .panel {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface) 70%);
+  box-shadow: inset 0 0 0 4px transparent, inset 0 0 0 5px var(--rule);
+}
+
+/* Tenebrae: hard, empty frame */
+:root[data-style='tenebrae'] .panel {
+  background: transparent;
+  border-color: var(--rule);
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+  font-size: 1.15em;
+}
+
+.panel-title .bi {
+  color: var(--gold);
+  font-size: 0.9em;
+}
+
+.card-link {
+  display: block;
+  transition: border-color 0.25s ease, background-color 0.2s ease, color 0.2s ease, transform 0.25s ease;
+}
+
+.card-link:hover {
+  border-color: var(--gold);
+}
+
+:root[data-style='grimoire'] .card-link:hover,
+:root[data-style='sigillum'] .card-link:hover {
+  transform: translateY(-2px);
+}
+
+:root[data-style='tenebrae'] .card-link:hover {
+  background: var(--inv-bg);
+  color: var(--inv-text);
+  border-color: var(--inv-bg);
+  --muted: var(--inv-text);
+  --subtle: var(--inv-text);
+  --gold: var(--inv-text);
+}
+
+/* =====================================================================
+   Buttons
+   ===================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 40px;
+  padding: 0 1.1rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  border-color: var(--gold);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  border-color: var(--gold);
+  color: var(--text);
+}
+
+:root[data-style='grimoire'] .btn-primary {
+  box-shadow: inset 0 0 0 3px var(--bg), inset 0 0 0 4px var(--rule-strong);
+}
+
+:root[data-style='grimoire'] .btn-primary:not(:disabled):hover {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: inset 0 0 0 3px var(--accent), inset 0 0 0 4px rgba(243, 230, 204, 0.35);
+}
+
+:root[data-style='sigillum'] .btn-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:root[data-style='sigillum'] .btn-primary:not(:disabled):hover {
+  background: transparent;
+  color: var(--accent-ink);
+}
+
+:root[data-style='tenebrae'] .btn-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:root[data-style='tenebrae'] .btn-primary:not(:disabled):hover {
+  border-color: var(--inv-bg);
+  background: var(--inv-bg);
+  color: var(--inv-text);
+}
+
+.btn-block {
+  width: 100%;
+  height: 48px;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.icon-btn:hover,
+.icon-btn[aria-expanded='true'] {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* =====================================================================
+   Forms
+   ===================================================================== */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap > .bi {
+  position: absolute;
+  left: 0.85rem;
+  color: var(--subtle);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  height: 46px;
+  padding: 0 1rem 0 2.5rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: max(16px, var(--body-size));
+  transition: border-color 0.2s ease;
+}
+
+.input::placeholder {
+  color: var(--subtle);
+  font-style: italic;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent-ink);
+}
+
+/* Grimoire: writing on a ruled line */
+:root[data-style='grimoire'] .input {
+  border-width: 0 0 1px;
+  border-radius: 0;
+  padding-left: 2.2rem;
+}
+
+:root[data-style='grimoire'] .input-wrap > .bi {
+  left: 0.2rem;
+}
+
+.select {
+  height: 34px;
+  padding: 0 0.6rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+}
+
+/* =====================================================================
+   Chips, badges, alerts, indicators
+   ===================================================================== */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 32px;
+  padding: 0 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.chip.is-active {
+  border-color: var(--gold);
+  color: var(--text);
+}
+
+:root[data-style='tenebrae'] .chip.is-active {
+  background: var(--inv-bg);
+  color: var(--inv-text);
+  border-color: var(--inv-bg);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--danger);
+  border-radius: var(--radius);
+  color: var(--danger);
+  font-size: 0.95em;
+}
+
+/* A candle flame (dot) that flickers */
+.flame {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--accent-ink);
+  box-shadow: 0 0 10px var(--accent-ink);
+  animation: flicker 2.6s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  38% { opacity: 0.55; }
+  42% { opacity: 1; }
+  70% { opacity: 0.7; }
+}
+
+.spinner {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Leviathan cross mark */
+.sigil-mark {
+  width: 16px;
+  height: 26px;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+/* =====================================================================
+   Stat rows (atmo readings, recipe facts)
+   ===================================================================== */
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1.1rem 1.25rem;
+}
+
+.stat + .stat {
+  border-left: 1px solid var(--rule);
+}
+
+.stat-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+}
+
+.stat-label .bi {
+  color: var(--gold);
+}
+
+.stat-value {
+  font-family: var(--font-num);
+  font-variant-numeric: var(--num-variant);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.stat-lg .stat-value {
+  font-size: clamp(2.2rem, 5vw, 2.8rem);
+}
+
+.stat-unit {
+  margin-left: 0.3rem;
+  font-size: 0.5em;
+  color: var(--gold);
+}
+
+:root[data-style='tenebrae'] .stat-unit {
+  color: var(--accent-ink);
+}
+
+:root[data-style='sigillum'] .stat-row {
+  border-bottom: 0;
+}
+
+@media (max-width: 560px) {
+  .stat + .stat {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+  }
+}
+
+/* =====================================================================
+   Header
+   ===================================================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+:root[data-style='grimoire'] .header {
+  box-shadow: 0 3px 0 -2px var(--rule);
+}
+
+.header-inner {
+  max-width: 1080px;
+  height: var(--header-h);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  line-height: 1;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--gold);
+}
+
+:root[data-style='sigillum'] .brand-name {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+:root[data-style='tenebrae'] .brand-name {
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--text);
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.is-active {
+  color: var(--text);
+}
+
+:root[data-style='grimoire'] .nav-link.is-active,
+:root[data-style='sigillum'] .nav-link.is-active {
+  color: var(--gold);
+}
+
+:root[data-style='tenebrae'] .nav-link.is-active::before {
+  content: '▲';
+  color: var(--accent-ink);
+  font-size: 0.8em;
+}
+
+.nav-link .lock {
+  font-size: 0.75em;
+  opacity: 0.7;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0 0.3rem;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1;
+}
+
+:root[data-style='tenebrae'] .avatar {
+  border-radius: 0;
+  font-size: 20px;
+}
+
+.user-name {
+  max-width: 14ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+}
+
+.login-btn {
+  height: 38px;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* Style switcher */
+.style-switch {
+  position: relative;
+}
+
+.style-glyph {
+  font-family: 'Segoe UI Symbol', 'Noto Sans Symbols', serif;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.style-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 60;
+  width: 250px;
+  padding: 0.4rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.6);
+}
+
+.style-option {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 0.65rem 0.7rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.style-option:hover {
+  background: var(--surface-2);
+}
+
+.style-option .style-glyph {
+  width: 1.4rem;
+  text-align: center;
+  color: var(--gold);
+}
+
+.style-option-name {
+  display: block;
+  font-family: var(--font-head);
+  font-variant: var(--head-variant);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.style-option-desc {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.style-option[aria-checked='true'] {
+  background: var(--surface-2);
+}
+
+.style-option[aria-checked='true']::after {
+  content: '✓';
+  margin-left: auto;
+  color: var(--gold);
+}
+
+@media (max-width: 760px) {
+  .header-inner {
+    gap: 1rem;
+  }
+
+  .menu-toggle {
+    display: inline-grid;
+  }
+
+  .user-name,
+  .login-btn span {
+    display: none;
+  }
+
+  .login-btn {
+    width: 38px;
+    padding: 0;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 1.5rem 1rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule-strong);
+  }
+
+  .nav.is-open {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 0.8rem 0;
+  }
+
+  .nav-link + .nav-link {
+    border-top: 1px solid var(--rule);
+  }
+}
+
+/* =====================================================================
+   Home hero
+   ===================================================================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: 2rem;
+  padding: 2.5rem 0 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: var(--title-weight);
+  font-size: clamp(4rem, 12vw, 8rem);
+  line-height: 0.95;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.hero-sub {
+  margin-top: 1.25rem;
+  max-width: 44ch;
+  color: var(--muted);
+  font-size: 1.25em;
+}
+
+:root:not([data-style='tenebrae']) .hero-sub {
+  font-style: italic;
+}
+
+:root[data-style='grimoire'] .hero-title .initial {
+  color: var(--accent-ink);
+}
+
+:root[data-style='sigillum'] .hero {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+}
+
+:root[data-style='sigillum'] .hero-title {
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+}
+
+:root[data-style='tenebrae'] .hero-title {
+  font-size: clamp(4.5rem, 16vw, 11rem);
+  line-height: 0.82;
+  letter-spacing: -0.02em;
+}
+
+:root[data-style='tenebrae'] .hero-title .mark {
+  color: var(--accent-ink);
+}
+
+:root[data-style='tenebrae'] .hero-sub {
+  font-size: 1em;
+}
+
+.hero-status {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.25rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+}
+
+.hero-sigil {
+  width: 100%;
+  max-width: 320px;
+  justify-self: center;
+  aspect-ratio: 1;
+  color: var(--gold);
+}
+
+.hero-sigil .ring {
+  transform-origin: 100px 100px;
+  animation: turn 140s linear infinite;
+}
+
+.hero-sigil .ring-rev {
+  transform-origin: 100px 100px;
+  animation: turn 220s linear infinite reverse;
+}
+
+@keyframes turn {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 720px) {
+  :root[data-style='sigillum'] .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-sigil {
+    max-width: 220px;
+  }
+}
+
+/* =====================================================================
+   Relic cards (projects, sensor modules)
+   ===================================================================== */
+
+.relic {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 220px;
+  padding: 1.75rem;
+}
+
+.relic-num { order: 1; }
+.relic-glyph { order: 2; }
+.relic-tag { order: 3; }
+.relic-title { order: 4; font-size: 1.6em; }
+.relic-motto { order: 5; }
+.relic-desc { order: 6; color: var(--muted); }
+.relic-cta { order: 7; margin-top: auto; padding-top: 1rem; }
+
+.relic-motto {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.relic-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  align-self: flex-start;
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+  transition: gap 0.2s ease;
+}
+
+.relic:hover .relic-cta {
+  gap: 0.75rem;
+}
+
+.relic-num,
+.relic-glyph,
+.relic-seal {
+  display: none;
+}
+
+.relic-tag {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+}
+
+/* Grimoire: wax seal on locked relics, underlined CTA */
+:root[data-style='grimoire'] .relic-tag {
+  display: none;
+}
+
+:root[data-style='grimoire'] .relic-seal {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #c0392b, var(--accent) 55%, #4f0d08);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 0 0 3px rgba(0, 0, 0, 0.18);
+  color: #f0c9a8;
+  font-size: 15px;
+}
+
+:root[data-style='grimoire'] .relic-cta {
+  border-bottom: 1px solid var(--accent-ink);
+}
+
+/* Sigillum: tarot card with an arched top */
+:root[data-style='sigillum'] .relic {
+  align-items: center;
+  text-align: center;
+  min-height: 330px;
+  padding: 3.5rem 1.5rem 1.75rem;
+  border-radius: 170px 170px var(--radius-card) var(--radius-card);
+  box-shadow: none;
+}
+
+:root[data-style='sigillum'] .relic::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--rule);
+  border-radius: 164px 164px 2px 2px;
+  pointer-events: none;
+}
+
+:root[data-style='sigillum'] .relic-num {
+  display: block;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  letter-spacing: 0.3em;
+}
+
+:root[data-style='sigillum'] .relic-glyph {
+  display: block;
+  margin: 0.4rem 0 0.8rem;
+  color: var(--gold);
+  font-family: 'Segoe UI Symbol', 'Noto Sans Symbols', serif;
+  font-size: 44px;
+  line-height: 1;
+}
+
+:root[data-style='sigillum'] .relic-tag {
+  order: 8;
+  margin-top: 1rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--rule-strong);
+  color: var(--gold);
+}
+
+:root[data-style='sigillum'] .relic-cta {
+  align-self: center;
+}
+
+:root[data-style='sigillum'] .relic-title {
+  font-size: 1.1em;
+}
+
+/* Tenebrae: raw tag, huge gothic title */
+:root[data-style='tenebrae'] .relic-tag {
+  color: var(--accent-ink);
+}
+
+:root[data-style='tenebrae'] .relic-tag[data-locked='true']::before {
+  content: '▲ ';
+}
+
+:root[data-style='tenebrae'] .relic-tag[data-locked='false']::before {
+  content: '▽ ';
+}
+
+:root[data-style='tenebrae'] .relic:hover .relic-tag {
+  color: var(--inv-text);
+}
+
+:root[data-style='tenebrae'] .relic-title {
+  font-size: 2.6em;
+  line-height: 1;
+}
+
+:root[data-style='tenebrae'] .relic-motto {
+  font-style: normal;
+}
+
+/* =====================================================================
+   Recipes
+   ===================================================================== */
+
+.category {
+  margin-bottom: 2.75rem;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 1.25rem;
+}
+
+.tile {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-card);
+  background: var(--surface-2);
+}
+
+.tile-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 3rem;
+}
+
+.tile-fallback::before {
+  content: var(--ornament);
+}
+
+.tile-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease, filter 0.5s ease;
+}
+
+.tile:hover .tile-img {
+  transform: scale(1.05);
+}
+
+.tile-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.8rem 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+  color: #f3e6cc;
+  font-family: var(--font-head);
+  font-variant: var(--head-variant);
+  text-transform: var(--head-transform);
+  letter-spacing: var(--head-tracking);
+  font-size: 1.15em;
+  font-weight: var(--head-weight);
+}
+
+/* Grimoire: an engraved plate — inner frame, aged photo that warms on hover */
+:root[data-style='grimoire'] .tile {
+  box-shadow: inset 0 0 0 6px var(--surface), inset 0 0 0 7px var(--rule-strong);
+}
+
+:root[data-style='grimoire'] .tile-img {
+  inset: 7px;
+  width: calc(100% - 14px);
+  height: calc(100% - 14px);
+  filter: sepia(0.45) saturate(0.8) contrast(1.05);
+}
+
+:root[data-style='grimoire'] .tile:hover .tile-img {
+  filter: none;
+}
+
+:root[data-style='grimoire'] .tile-caption {
+  left: 7px;
+  right: 7px;
+  bottom: 7px;
+  text-align: center;
+}
+
+/* Sigillum: arched window */
+:root[data-style='sigillum'] .tile {
+  border-radius: 140px 140px var(--radius-card) var(--radius-card);
+  border-color: var(--rule-strong);
+}
+
+:root[data-style='sigillum'] .tile-caption {
+  text-align: center;
+  color: #ece4d0;
+  font-size: 0.8em;
+}
+
+/* Tenebrae: black & white until touched */
+:root[data-style='tenebrae'] .tile {
+  border-color: var(--rule);
+}
+
+:root[data-style='tenebrae'] .tile-img {
+  filter: grayscale(1) contrast(1.15) brightness(0.85);
+}
+
+:root[data-style='tenebrae'] .tile:hover .tile-img {
+  filter: none;
+}
+
+:root[data-style='tenebrae'] .tile-caption {
+  background: #000;
+  color: #ede7dc;
+  font-size: 1.6em;
+  line-height: 1;
+  padding: 0.6rem 0.8rem;
+}
+
+/* Recipe detail */
+.recipe-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 340px;
+  padding: 1.75rem;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-card);
+  background: var(--surface-2);
+}
+
+.recipe-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 60%);
+}
+
+.recipe-hero-img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipe-hero-content {
+  color: #f3e6cc;
+}
+
+.recipe-hero .eyebrow,
+.recipe-hero .subtitle {
+  color: rgba(243, 230, 204, 0.85);
+}
+
+.recipe-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.6rem, 7vw, 4.2rem);
+  font-weight: var(--title-weight);
+  line-height: var(--title-leading);
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+:root[data-style='sigillum'] .recipe-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:root[data-style='grimoire'] .recipe-hero {
+  box-shadow: inset 0 0 0 7px var(--surface), inset 0 0 0 8px var(--rule-strong);
+}
+
+:root[data-style='grimoire'] .recipe-hero-img {
+  inset: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+}
+
+:root[data-style='sigillum'] .recipe-hero {
+  border-radius: 400px 400px var(--radius-card) var(--radius-card);
+  justify-content: center;
+  text-align: center;
+  min-height: 380px;
+}
+
+.recipe-facts {
+  margin: 1.25rem 0 1.75rem;
+}
+
+.recipe-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.ingredients {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ingredient {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted var(--rule-strong);
+  font-size: 0.95em;
+}
+
+.ingredient:last-child {
+  border-bottom: 0;
+}
+
+.ingredient > :last-child {
+  text-align: right;
+  font-family: var(--font-num);
+  font-variant-numeric: var(--num-variant);
+}
+
+.optional-label {
+  margin: 1.4rem 0 0.25rem;
+  color: var(--subtle);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.step {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  gap: 0.6rem;
+  line-height: 1.6;
+}
+
+.step::before {
+  content: counter(step, upper-roman) '.';
+  color: var(--gold);
+  font-family: var(--font-num);
+  font-variant: small-caps;
+  text-align: right;
+}
+
+:root[data-style='tenebrae'] .step::before {
+  content: counter(step, decimal-leading-zero);
+  color: var(--accent-ink);
+  text-align: left;
+}
+
+/* Grimoire: illuminated first step */
+:root[data-style='grimoire'] .step:first-child p::first-letter {
+  float: left;
+  margin: 0.08em 0.1em 0 0;
+  color: var(--accent-ink);
+  font-family: var(--font-display);
+  font-size: 3.1em;
+  line-height: 0.8;
+}
+
+@media (max-width: 720px) {
+  .recipe-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-hero {
+    min-height: 260px;
+  }
+}
+
+/* =====================================================================
+   Login
+   ===================================================================== */
+
+.login-page {
+  min-height: calc(100vh - var(--header-h));
+  display: grid;
+  place-items: center;
+  padding: 2rem 1.25rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem 2.25rem 2.25rem;
+}
+
+.login-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.login-head .sigil-mark {
+  width: 22px;
+  height: 36px;
+  margin-bottom: 0.75rem;
+}
+
+.login-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.2rem, 6vw, 2.8rem);
+  font-weight: var(--title-weight);
+  line-height: var(--title-leading);
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+:root[data-style='sigillum'] .login-title {
+  font-size: 1.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.input-password {
+  padding-right: 2.75rem;
+}
+
+.reveal {
+  position: absolute;
+  right: 0.3rem;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: var(--subtle);
+  cursor: pointer;
+}
+
+.reveal:hover {
+  color: var(--text);
+}
+
+/* =====================================================================
+   PanOpSys
+   ===================================================================== */
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 0.9rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: var(--ui-size);
+  font-variant: var(--ui-variant);
+  text-transform: var(--ui-transform);
+  letter-spacing: var(--ui-tracking);
+}
+
+.status-error {
+  color: var(--danger);
+}
+
+.atmo-stats {
+  margin-bottom: 1.75rem;
+}
+
+.chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.chart-head .panel-title {
+  margin: 0;
+}
+
+.chart-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dot);
+}
+
+.chart-wrap {
+  position: relative;
+  height: 320px;
+}
+
+.chart-alert {
+  margin-bottom: 1rem;
+}
+
+.planned {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border-style: dashed;
+}
+
+.planned .bi {
+  margin-bottom: 0.5rem;
+  color: var(--gold);
+  font-size: 1.4rem;
 }

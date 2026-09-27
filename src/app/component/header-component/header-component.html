@@ -1,24 +1,80 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3 ps-2 pe-2">
-  <a class="navbar-brand" routerLink="/">
-    <i class="bi bi-diagram-3 mx-2"></i>
-    Mezzanine
-  </a>
-  <button
-    class="navbar-toggler btn btn-outline-primary" type="button"
-    data-bs-toggle="collapse" data-bs-target="#navbarContent"
-    aria-expanded="false" aria-label="Toggle navigation"
-    aria-controls="navbarContent">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<header class="header">
+  <div class="header-inner">
+    <a class="brand" routerLink="/">
+      <app-leviathan-cross />
+      <span class="brand-name">Mezzanine</span>
+    </a>
 
-  <div class="collapse navbar-collapse" id="navbarContent">
-    <ul class="navbar-nav mr-auto mt-2 mt-sm-0 ms-5">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/panopsys">PanOpSys</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/recipes">Recipes</a>
-      </li>
-    </ul>
+    <nav class="nav" [class.is-open]="menuOpen()" aria-label="Main">
+      <a class="nav-link" routerLink="/panopsys" routerLinkActive="is-active">
+        PanOpSys
+        @if (!auth.isLoggedIn()) {
+          <i class="bi bi-lock lock" aria-label="Requires sign in"></i>
+        }
+      </a>
+      <a class="nav-link" routerLink="/recipes" routerLinkActive="is-active">Recipes</a>
+    </nav>
+
+    <div class="actions">
+      <div class="style-switch">
+        <button
+          class="icon-btn"
+          type="button"
+          aria-haspopup="menu"
+          [attr.aria-expanded]="styleMenuOpen()"
+          [attr.aria-label]="'Design: ' + currentStyle().name"
+          [title]="'Design: ' + currentStyle().name"
+          (click)="styleMenuOpen.set(!styleMenuOpen())">
+          <span class="style-glyph">{{ currentStyle().glyph }}</span>
+        </button>
+
+        @if (styleMenuOpen()) {
+          <div class="style-menu" role="menu" aria-label="Design">
+            @for (s of styles; track s.id) {
+              <button
+                class="style-option"
+                type="button"
+                role="menuitemradio"
+                [attr.aria-checked]="theme.style() === s.id"
+                (click)="chooseStyle(s.id)">
+                <span class="style-glyph">{{ s.glyph }}</span>
+                <span>
+                  <span class="style-option-name">{{ s.name }}</span>
+                  <span class="style-option-desc">{{ s.description }}</span>
+                </span>
+              </button>
+            }
+          </div>
+        }
+      </div>
+
+      <button class="icon-btn" type="button" (click)="theme.cycle()" [attr.aria-label]="themeLabel()" [title]="themeLabel()">
+        <i class="bi" [class]="themeIcon()"></i>
+      </button>
+
+      @if (auth.isLoggedIn()) {
+        <div class="user">
+          <span class="avatar" [title]="auth.username()">{{ initial() }}</span>
+          <span class="user-name">{{ auth.username() }}</span>
+        </div>
+        <button class="icon-btn" type="button" (click)="logout()" aria-label="Sign out" title="Sign out">
+          <i class="bi bi-box-arrow-right"></i>
+        </button>
+      } @else {
+        <a class="btn btn-primary login-btn" routerLink="/login">
+          <i class="bi bi-key"></i>
+          <span>Sign in</span>
+        </a>
+      }
+
+      <button
+        class="icon-btn menu-toggle"
+        type="button"
+        (click)="menuOpen.set(!menuOpen())"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Toggle navigation">
+        <i class="bi" [class]="menuOpen() ? 'bi-x-lg' : 'bi-list'"></i>
+      </button>
+    </div>
   </div>
-</nav>
+</header>
